@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block page %}Unidades Paschoalotto{% endblock %}
+
+{% block content %}
+<body class="bg-gradient-primary">
+    <div class="row justify-content-left">
+        <div class="col-xl-1">
+            <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#CadUnidade">
+                Adicionar
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-xl-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Unidade</th>
+                    <th scope="col">Ativo</th>
+                    </tr>
+                </thead>
+                {% for site in sites %}
+                    {% if site.ativo == True %}
+                    <tbody>        
+                            <td>{{ site.unidade }}</td>
+                            <td>Sim</td>
+                    </tbody>
+                    {% else %}
+                    <tbody>        
+                        <td>{{ site.unidade }}</td>
+                        <td>Não</td>
+                    </tbody>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+  </div>
+    <div id="CadUnidade" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Cadastrar Unidade</h1>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <span>Qual a nomeclatura do site?</span>
+                            <input type="text" class="form-control form-control-user"
+                                id="unidade" name="unidade">
+                        </div>
+                        <input class="btn btn-primary btn-user btn-block" type="submit" value="Registrar"/>
+                    </form>
+                </div>
+            </div>
+        </div>                
+    </div>
+{% endblock %}

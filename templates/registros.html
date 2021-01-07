@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block page %}Relatório de Horas{% endblock %}
+
+{% block content %}
+<div class="col-xl-2">
+  <br>
+  <button class="btn btn-primary btn-user btn-block" href="#bydate" data-toggle="collapse">Pesquisar</button>
+</div>
+<div id="bydate" class="collapse">
+  <br />
+  <form action="" method="POST">
+    <div class="row">
+      <div class="col-xl-3">
+        <span>Data Inicio</span>
+        <input type="date" class="form-control" id="mindate" name="mindate">
+      </div>
+      <div class="col-xl-3">
+        <span>Data Final</span>
+        <input type="date" class="form-control" id="maxdate" name="maxdate">
+      </div>
+      <div class="col-xl-3">
+        <span>Usuário</span>
+        <input type="text" class="form-control" id="user" name="user">
+      </div>
+      <div class="col-xl-3">
+        <span>Site</span>
+        <select class="form-control" name="aonde">
+          <option></option>
+          {% for site in sites %}
+          <option>{{ site.unidade }}</option>
+          {% endfor %}
+      </select>
+      </div>
+      <div class="col-xl-12">
+        <br>
+        <input class="btn btn-primary btn-user btn-block" type="submit" value="Go"/>
+      </div>
+    </div>
+  </form>
+</div>
+<br>
+<br>
+<body class="bg-gradient-primary">
+  <div class="row justify-content-center">
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">Usuário</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Motivo</th>
+                  <th scope="col">Site</th>
+                  <th scope="col">Hora Inicio</th>
+                  <th scope="col">Saída Almoço</th>
+                  <th scope="col">Volta Almoço</th>
+                  <th scope="col">Horario Final</th>
+                  <th scope="col">Tempo Total</th>
+                </tr>
+            </thead>
+            {% for registro in registros.items %}
+            <tbody>        
+                    <td>{{ registro.login }}</td>
+                    <td>{{ registro.date }}</td>
+                    <td>{{ registro.motivo }}</td>
+                    <td>{{ registro.aonde }}</td>
+                    <td>{{ registro.initial_time }}</td>
+                    <td>{{ registro.pause_launch }}</td>
+                    <td>{{ registro.back_launch }}</td>
+                    <td>{{ registro.final_time }}</td>
+                    <td>{{ registro.total_time }}</td>
+            </tbody>
+            {% endfor %}
+        </table>
+      </div>
+        {% for page_num in registros.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+              {% if page_num %}
+                {% if registros.page == page_num %}
+                  <a class="btn btn-primary mb-4" href="{{ url_for('registros', page=page_num) }}">{{ page_num }}</a>
+                  {% else %}
+                  <a class="btn btn-outline-primary mb-4" href="{{ url_for('registros', page=page_num) }}">{{ page_num }}</a>
+                  {% endif %}
+                {% else %}
+                  ...
+              {% endif %}
+            {% endfor %}
+        {% endblock %}
+
+  </div>
+</body>
