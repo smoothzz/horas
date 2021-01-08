@@ -1,11 +1,10 @@
 from flask import Flask
-#from datetime import datetime as dt
-#import datetime
 from functools import wraps
 from flask_bcrypt import Bcrypt
-from models import *
+from flask_sqlalchemy import SQLAlchemy
+from models import users, registro_horas, sites
 
-app = Flask(__name__)     
+app = Flask(__name__)
 
 ENV = 'prod'
 
@@ -19,11 +18,11 @@ else:
 app.config['SECRET_KEY'] = "SuporteNP"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db.init_app(app)
+db = SQLAlchemy(app)
+
 bcrypt=Bcrypt(app)
 
 from routes import *
 
 if __name__ == "__main__":
     app.run()
-    #app.run(debug=True)
