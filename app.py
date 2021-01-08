@@ -13,7 +13,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/horas'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://adznetsqkutjcl:bcdd79f82b7945b6aff2eaa71c414aa913d44f73028e59aced99f1b95ca8e95b@ec2-50-19-32-202.compute-1.amazonaws.com:5432/d3nu4cp25ctfb8'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql10385715:pWk1BJvenT@sql10.freemysqlhosting.net/sql10385715'
 
 app.config['SECRET_KEY'] = "SuporteNP"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
