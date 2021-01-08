@@ -7,7 +7,8 @@ from models import *
 
 app = Flask(__name__)     
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/horas'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/horas'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql10385715:pWk1BJvenT@sql10.freemysqlhosting.net/sql10385715'
 app.config['SECRET_KEY'] = "SuporteNP"
 
 db.init_app(app)
