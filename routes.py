@@ -5,6 +5,7 @@ from models import users, registro_horas, sites
 import datetime
 from datetime import datetime as dt
 
+
 @app.route("/", methods=["POST", "GET"])    
 @login_required         
 def home():

@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
+bcrypt=Bcrypt()
 
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
@@ -22,8 +24,8 @@ class users(db.Model):
         self.site = site
         self.level = level
         self.active = active
-        self.created_at = dt.now()
-        self.updated_at = dt.now()
+        self.created_at = created_at
+        self.updated_at = updated_at
 
 class registro_horas(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
