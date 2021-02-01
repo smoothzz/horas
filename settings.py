@@ -12,7 +12,12 @@ app = Flask(__name__)
 #else:
 #    app.debug = False
 #    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql10385715:pWk1BJvenT@sql10.freemysqlhosting.net/sql10385715'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://smoothz:tgo090393@horas.cgsqfhllrfsr.sa-east-1.rds.amazonaws.com/horas'
+def con_try():
+	try:
+		app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://smoothz:tgo090393@horas.cgsqfhllrfsr.sa-east-1.rds.amazonaws.com/horas'
+	except:
+		return "<h1>Cannot connect to DB</h1>"	
+con_try()
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/horas'
 app.config['SECRET_KEY'] = "SuporteNP"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
