@@ -7,6 +7,9 @@ def login_required(f):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
-            flash('Você precisa estar logado para acessar essa página!')
+            flash('Você precisa estar logado para acessar essa página!', 'error')
             return redirect(url_for('login'))
     return wrap
+
+
+

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block page %}Concluir período{% endblock %}
+
+{% block content %}
+<body class="bg-gradient-primary">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <form action="" method="POST">
+                <div class="row">
+                  <div class="col-xl-3">
+                        <span>Data Inicio</span>
+                        <input type="date" class="form-control" id="initialdone" name="initialdone">
+                    </div>
+                    <div class="col-xl-3">
+                        <span>Data Final</span>
+                        <input type="date" class="form-control" id="finaldone" name="finaldone">
+                    </div>
+                    <div class="col-xl-2">
+                        <br>
+                        <input class="btn btn-danger btn" type="submit" value="Concluir"/>
+                    </div>                 
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

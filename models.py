@@ -1,8 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-
-db = SQLAlchemy()
-bcrypt=Bcrypt()
+from settings import db, crypt
+from datetime import datetime as dt
 
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
@@ -20,7 +17,7 @@ class users(db.Model):
         self.name = name
         self.login = login
         self.email = email
-        self.password = bcrypt.generate_password_hash(password)
+        self.password = crypt.generate_password_hash(password)
         self.site = site
         self.level = level
         self.active = active

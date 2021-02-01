@@ -1,0 +1,33 @@
+<html>
+    <title>HORAS EXTRAS TECNOLOGIA</title>
+    <body>
+        <h1>Relatório de Horas período: {{mindate}} {{maxdate}} </h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Motivo</th>
+                    <th>Site</th>
+                    <th>Hora Inicio</th>
+                    <th>Saída Almoço</th>
+                    <th>Volta Almoço</th>
+                    <th>Horario Final</th>
+                    <th>Tempo Total</th>
+                </tr>
+            </thead>
+            {% for registro in registros.items %}
+            <tbody>
+                <td>{{ registro.date }}</td>
+                <td>{{ registro.motivo }}</td>
+                <td>{{ registro.aonde }}</td>
+                <td>{{ registro.initial_time }}</td>
+                <td>{{ registro.pause_launch }}</td>
+                <td>{{ registro.back_launch }}</td>
+                <td>{{ registro.final_time }}</td>
+                <td>{{ registro.total_time }}</td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </body>
+</html>

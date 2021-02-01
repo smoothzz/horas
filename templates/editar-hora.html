@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block page %}Editar Hora{% endblock %}
+
+{% block content %}
+<body class="bg-gradient-primary">
+    <div class="row justify-content-center">
+        <div class="col-xl-3">
+            <form action="" method="POST">
+                <div class="form-group">
+                    <span>Data</span>
+                    <input type="date" class="form-control form-control-user"
+                        id="date" name="date">
+                </div>
+                <div class="form-group">
+                    <span>Em qual site?</span>
+                    <select class="form-control" name="aonde">
+                        <option></option>
+                        {% for registro in registros %}
+                        <option>{{ registro.unidade }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span>Motivo Hora Extra</span>
+                    <input type="text" class="form-control form-control-user"
+                        id="motivo" name="motivo">
+                </div>
+                <div class="form-group">
+                    <span>Início Hora Extra</span>
+                    <input type="time" class="form-control form-control-user"
+                        id="initial_time" name="initial_time">
+                </div>
+                <div class="form-group">
+                    <span>Saída almoço</span>
+                    <input type="time" class="form-control form-control-user"
+                        id="pause_launch" name="pause_launch">
+                </div>
+                <div class="form-group">
+                        <span>Volta almoço</span>
+                        <input type="time" class="form-control form-control-user"
+                            id="back_launch" name="back_launch">
+                </div>
+                <div class="form-group">
+                    <span>Horario final</span>
+                    <input type="time" class="form-control form-control-user"
+                        id="final_time" name="final_time">
+                </div>
+                <div class="row">
+                    <a class="btn btn-secondary btn-user btn-block" href="/">Cancelar</a>
+                    <input class="btn btn-success btn-user btn-block" type="submit" value="Salvar"/>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

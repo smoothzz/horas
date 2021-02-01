@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -53,12 +53,13 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Charts -->
+            {% if session["user_type"] == 3 %}
             <li class="nav-item">
                 <a class="nav-link" href="/registros">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Registros</span></a>
             </li>
-
+            {% endif %}
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="/registrarhora">
@@ -78,10 +79,13 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opçoes</h6>
-                        <a class="collapse-item" href="utilities-color.html">Alterar senha</a>
-                        <a class="collapse-item" href="utilities-border.html">Cadastrar Usuário</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="/changepass">Alterar senha</a>
+                        {% if session["user_type"] == 3 %}
+                        <a class="collapse-item" href="/register">Cadastrar Usuário</a>
+                        <a class="collapse-item" href="/changesite">Mudar site</a>
+                        <a class="collapse-item" href="/done">Concluir Período</a>
+                        <a class="collapse-item" href="/undone">Reverter Período</a>
+                        {% endif %}
                     </div>
                 </div>
             </li>            
@@ -227,12 +231,7 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
     <!-- Page level plugins -->
-    <script src="{{ url_for('static',filename='chart.js/Chart.min.js') }}"></script>
-    <!-- Page level custom scripts -->
-    <script src="{{ url_for('static',filename='js/demo/chart-area-demo.js') }}"></script>
-  
-    <script src="{{ url_for('static',filename='js/demo/chart-pie-demo.js') }}"></script>
-    
+   
 
 </body>
 
