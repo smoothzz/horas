@@ -1,4 +1,4 @@
-#!/home/ec2-user/horas/env/bin/python3
+#!/home/ubuntu/horas/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
